@@ -1,0 +1,45 @@
+<nav class="navbar navbar-primary">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <span class="navbar-brand">Blog com Node.js</span>
+        </div>
+        <div class="">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/artigos">Artigos</a>
+                </li>
+                <li>
+                    <a href="/autores">Autores</a>
+                </li>
+                <% if (user.id != null && user.admin) { %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Administração do Blog
+                    </a>
+                    <ul>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="/admin/artigos">Artigos</a>
+                                <a class="dropdown-item" href="/admin/autores">Autores</a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+                <% } %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="navbar-text"><%= user.nome %></li>
+                <% if (user.id == null) { %>
+                    <li>
+                        <a href="/login">Login</a>
+                    </li>
+                <% } else { %>
+                    <li>
+                        <a href="/logout">Logout</a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>

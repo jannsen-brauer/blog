@@ -1,0 +1,44 @@
+
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea#texto' });</script>
+
+<div class="form-group">
+    <label for="titulo" class="col-sm-2 control-label">Título</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título" value="<%=artigo.titulo%>">
+    </div>
+</div>
+<div class="form-group">
+    <label for="autor" class="col-sm-2 control-label">Autor</label>
+    <div class="col-sm-10">
+        <p class="form-control-static"><%=artigo.autor.nome%></p>
+        <input type="hidden" name="autor_nome" value="<%=artigo.autor.nome%>">
+        <input type="hidden" name="autor_id" value="<%=artigo.autor.id%>">
+    </div>
+</div>
+<div class="form-group">
+    <label for="resumo" class="col-sm-2 control-label">Resumo</label>
+    <div class="col-sm-10">
+        <textarea rows="2" class="form-control" id="resumo" name="resumo" placeholder="Resumo do artigo"><%=artigo.resumo%></textarea>
+    </div>
+</div>
+<div class="form-group">
+    <label for="texto" class="col-sm-2 control-label">Texto</label>
+    <div class="col-sm-10">
+        <textarea rows="15" class="form-control" id="texto" name="texto" placeholder="Texto completo do artigo"><%=artigo.texto%></textarea>
+    </div>
+</div>
+<div class="form-group">
+    <label for="criado" class="col-sm-2 control-label">Criado em</label>
+    <div class="col-sm-10">
+        <p class="form-control-static"><%=(artigo.criado?artigo.criado.toLocaleString():'')%></p>
+        <input type="hidden" name="criado" value="<%=artigo.criado%>">
+    </div>
+</div>
+<div class="form-group">
+    <label for="atualizado" class="col-sm-2 control-label">Atualizado em</label>
+    <div class="col-sm-10">
+        <p class="form-control-static"><%=(artigo.atualizado?artigo.atualizado.toLocaleString():'')%></p>
+    </div>
+</div>
+<input type="hidden" name="comentarios" value="<%= JSON.stringify(artigo.comentarios) %>" >

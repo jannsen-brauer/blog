@@ -1,0 +1,33 @@
+<%- include('../layouts/header') %>
+<%- include('../layouts/menu') %>
+
+<div class="container">
+
+ <h1>Artigos</h1>
+    <p><a href="/admin/artigos/novo" class="btn btn-primary">Novo</a></p>
+    <table class="table table-striped">
+        <thead>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Criado em</th>
+            <th>Atualizado em</th>
+            <th></th>
+        </thead>
+        <tbody id="tabela">
+            <% artigos.forEach(function(artigo){ %>
+                <tr>
+                    <td><%=artigo.titulo%></td>
+                    <td><%=artigo.autor.nome%></td>
+                    <td><%= (artigo.criado ? artigo.criado.toLocaleString() : "") %></td>
+                    <td>
+                        <% if(artigo.atualizado) { %>
+                            <%= artigo.atualizado.toLocaleString() %>
+                        <% } %>
+                    </td>
+                    <td><a href="/admin/artigos/<%=artigo._id%>" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
+<%- include("../layouts/footer") %>

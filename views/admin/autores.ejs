@@ -1,0 +1,33 @@
+<%- include('../layouts/header') %>
+<%- include('../layouts/menu') %>
+<div class="container">
+<h1>Autores</h1>
+    <p><a href="/admin/autores/novo" class="btn btn-primary">Novo</a></p>
+    <table class="table table-striped">
+        <thead>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Admin</th>
+            <th></th>
+        </thead>
+        <tbody id="tabela">
+            <% autores.forEach(function(autor){ %>
+                <tr>
+                    <td><%= autor.nome %></td>
+                    <td><%= autor.email %></td>
+                    <td>
+                        <% if (autor.admin){ %>
+                        <span class="glyphicon glyphicon-ok"></span>
+                        <% } %>
+                    </td>
+                    <td>
+                        <a href="/admin/autores/<%= autor._id %>" class="btn btn-info">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a> 
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<%- include("../layouts/footer") %>

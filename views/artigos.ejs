@@ -1,0 +1,42 @@
+<%- include('layouts/header') %>
+<%- include('layouts/menu') %>
+<div class="container">
+
+    <h1>
+        Artigos
+        <% 
+        var urlAnterior = "/artigos/pagina/".concat(parseInt(pagina) - 1);
+        var urlProxima  = "/artigos/pagina/".concat(parseInt(pagina) + 1);
+        if (filtro != null) {%>
+            de <%= filtro.nome %>
+            <%
+            urlAnterior = "/artigos/".concat(filtro.id).concat("/pagina/".concat(parseInt(pagina) - 1));
+            urlProxima  = "/artigos/".concat(filtro.id).concat("/pagina/".concat(parseInt(pagina) + 1));
+             %>
+        <% }%>
+    </h1>
+    <% artigos.forEach(function(artigo){ %>
+
+        <h3><a href="/artigo/<%= artigo._id %>"> <%= artigo.titulo %> </a> <small>por <a href="/artigos/<%= artigo.autor.id %>"><%= artigo.autor.nome %></a></small></h3>
+        <p>
+            <small>
+                <%= formataData(artigo.criado) %>
+                <% if (artigo.atualizado) {%>
+                    <br> atualizado em <%= formataData(artigo.atualizado) %>
+                <% }%>
+            </small>
+        </p>
+        <p><%= artigo.resumo %></p>
+        <hr>
+    <% });
+    if (parseInt(pagina) == 0 && artigos.length == porPagina) { %>
+        <p>Anterior &#0149; <a href="<%= urlProxima %>">Próxima</a></p>
+    <% } else if (parseInt(pagina) == 0 && artigos.length < porPagina){ %>
+        <p>Anterior &#0149; Próxima</p>
+    <% } else if (parseInt(pagina) > 0 && artigos.length == porPagina){ %>
+        <p><a href="<%= urlAnterior %>">Anterior</a> &#0149; <a href="<%= urlProxima %>">Próxima</a></p>
+    <% } else if (parseInt(pagina) > 0 && artigos.length < porPagina){ %>
+        <p><a href="<%= urlAnterior %>">Anterior</a> &#0149; Próxima</p>
+    <% } %>
+</div>
+<%- include("layouts/footer") %>

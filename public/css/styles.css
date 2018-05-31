@@ -1,0 +1,26 @@
+h1 {
+    margin-bottom: 1em;
+}
+
+footer {
+    margin-top: 3em;
+    margin-bottom: 2em;
+}
+
+.navbar{
+    background-color: #F8F8F8;
+    border: 1px solid #E7E7E7;
+    border-radius: 4px;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.glyphicon-thumbs-up.marcou-curtiu{
+    color: green;
+}
+
+.glyphicon-thumbs-down.marcou-naocurtiu{
+    color: red;
+}

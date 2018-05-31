@@ -1,0 +1,17 @@
+<%- include('../layouts/header') %>
+<%- include('../layouts/menu') %>
+<div class="container">
+
+    <h1>Autor</h1>
+    <form action="/admin/autores/<%= autor._id %>" method="POST">
+        <%- include('formautor') %>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <button type="submit" class="btn btn-primary">Alterar</button>
+                <a href="/admin/autores" class="btn btn-default">Cancelar</a>
+                <a href="/admin/autores/<%= autor._id %>/excluir" class="btn btn-danger">Excluir</a>
+            </div>
+        </div>
+    </form>
+</div>
+<%- include("../layouts/footer") %>
