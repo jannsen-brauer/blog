@@ -1,0 +1,69 @@
+<%- include('layouts/header') %>
+<%- include('layouts/menu') %>
+<div class="container">
+
+    <h1><%= artigo.titulo %></h1>
+    <input type="hidden" id="idartigo" value="<%= artigo._id %>">
+    <p class="lead">por
+        <a href="/artigos/<%= artigo.autor.id %>"> <%= artigo.autor.nome %> </a>
+    </p>
+    <p>
+        <small>
+            <span class="glyphicon glyphicon-time"> </span> 
+            <%= formataData(artigo.criado) %>
+            <% if (artigo.atualizado) {%>
+                <br> 
+                <span class="glyphicon glyphicon-edit"> </span> 
+                atualizado em <%= formataData(artigo.atualizado) %>
+            <% }%>
+        </small>
+    </p>
+    <hr>
+    <div>
+        <%- artigo.texto %>
+    </div>
+    
+    <hr>
+    
+    <div class="well">
+        <h4>Deixe um comentário:</h4>
+        <form role="form" method="POST" action="/artigo/<%= artigo._id %>/comentario">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Nome" name="nome">
+                </textarea>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="Comentário" name="comentario"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+    <% artigo.comentario.forEach(function(comentario) { %>
+    <div style="margin-top: 2em">
+        <div style="position: absolute; font-size:xx-large">
+            <span class="glyphicon glyphicon-user"></span>
+        </div>
+        <div style="margin-left: 3em">
+            <h4> <%= comentario.nome %> </h4>
+            <p class="text-muted">
+                <small><%= comentario.data %></small>
+            </p>
+            <p><%= comentario.texto %></p>
+            <p>
+                <span id="spanCurtiu_<%= comentario._id %>" class="cursor-pointer curtiu glyphicon glyphicon-thumbs-up" data-comentario="<%= comentario._id %>">
+                    <span id="curtiu_<%= comentario._id %>">
+                        <%= comentario.curtiu %> 
+                    </span>
+                </span>
+                &nbsp;
+                <span id="spanNaocurtiu_<%= comentario._id %>" class="cursor-pointer naocurtiu glyphicon glyphicon-thumbs-down" data-comentario="<%= comentario._id %>">
+                    <span id="naocurtiu_<%= comentario._id %>">
+                        <%= comentario.naocurtiu %>
+                    </span>
+                </span> 
+            </p>
+        </div>
+    </div>
+    <% }) %>
+</div>
+<%- include("layouts/footer") %>

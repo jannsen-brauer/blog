@@ -1,0 +1,18 @@
+<%- include('layouts/header') %>
+<%- include('layouts/menu') %>
+<div class="container">
+
+    <h1>
+        Autores
+    </h1>
+    <ul>
+        <% autores.forEach(function(autor){ %>
+    
+            <li>
+                <a href="/artigos/<%= autor._id %>"> <%= autor.nome %> </a> 
+            </li>
+    
+        <% }); %>
+    </ul>
+</div>
+<%- include("layouts/footer") %>

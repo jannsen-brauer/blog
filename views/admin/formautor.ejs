@@ -1,0 +1,26 @@
+<div class="form-group">
+    <label for="nome" class="col-sm-2 control-label">Nome</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="<%= autor.nome %>">
+    </div>
+</div>
+<div class="form-group">
+    <label for="email" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<%= autor.email %>">
+    </div>
+</div>
+<div class="form-group">
+    <label for="senha" class="col-sm-2 control-label">Senha</label>
+    <div class="col-sm-10">
+        <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" value="<%= autor.senha %>">
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-10 col-sm-offset-2">
+        <div class="checkbox">
+            <label>
+            <input type="checkbox" id="admin" name="admin" <%= (autor.admin ? "checked" : "") %> >Administrador</label>
+        </div>
+    </div>
+</div>
